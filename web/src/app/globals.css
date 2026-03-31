@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Backgrounds ─────────────────────────── */
+    --background: 220 18% 96%;       /* #F2F4F8 soft blue-gray */
+    --surface: 0 0% 100%;            /* pure white cards */
+    --surface-subtle: 220 20% 98%;   /* near-white secondary bg */
+
+    /* ── Text ────────────────────────────────── */
+    --foreground: 222 47% 8%;        /* #0D1526 deep ink */
+    --muted-foreground: 218 16% 54%; /* #7A8599 mid-gray */
+
+    /* ── Card ────────────────────────────────── */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 8%;
+
+    /* ── Primary — teal ──────────────────────── */
+    --primary: 171 72% 34%;          /* #16A394 vibrant teal */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 170 80% 94%;    /* #E6FAF8 teal tint */
+    --primary-mid: 170 60% 86%;      /* teal/20 */
+
+    /* ── Secondary ───────────────────────────── */
+    --secondary: 220 18% 93%;
+    --secondary-foreground: 222 47% 8%;
+
+    /* ── Muted ───────────────────────────────── */
+    --muted: 220 16% 93%;
+    --muted-foreground: 218 16% 54%;
+
+    /* ── Accent ──────────────────────────────── */
+    --accent: 38 92% 50%;
+    --accent-foreground: 26 90% 15%;
+
+    /* ── Status colors ───────────────────────── */
+    --success: 160 72% 40%;
+    --warning: 38 92% 50%;
+    --destructive: 0 82% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ── Borders ─────────────────────────────── */
+    --border: 220 16% 88%;           /* #DDE1EA subtle */
+    --input: 220 16% 88%;
+    --ring: 171 72% 34%;
+
+    /* ── Navigation panel ────────────────────── */
+    --nav: 222 44% 9%;               /* #0D1729 deep navy */
+    --nav-surface: 222 38% 13%;      /* #131F33 lighter navy */
+    --nav-border: 222 32% 18%;       /* #1E2D47 */
+    --nav-text: 220 20% 65%;         /* #8FA0BB muted nav text */
+    --nav-text-active: 0 0% 100%;    /* white when active */
+
+    /* ── Sidebar alias (compat) ──────────────── */
+    --sidebar: 222 44% 9%;
+
+    /* ── Radius ──────────────────────────────── */
+    --radius: 0.875rem;              /* 14px */
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1, "cv11" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  /* ── Cards ───────────────────────────────────────── */
+  .afya-card {
+    @apply bg-white rounded-2xl border border-[hsl(var(--border))] shadow-[0_1px_4px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.04)];
+  }
+
+  .afya-card-hover {
+    @apply afya-card transition-all duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] hover:-translate-y-0.5;
+  }
+
+  .afya-card-glass {
+    @apply rounded-2xl border border-white/20 backdrop-blur-md bg-white/80;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  /* ── Section ─────────────────────────────────────── */
+  .afya-section {
+    @apply space-y-5 animate-fade-in;
+  }
+
+  /* ── Labels ──────────────────────────────────────── */
+  .afya-label {
+    @apply text-[11px] font-semibold text-muted-foreground uppercase tracking-widest;
+  }
+
+  /* ── Status dots ─────────────────────────────────── */
+  .status-dot {
+    @apply inline-block w-2 h-2 rounded-full shrink-0;
+  }
+  .status-dot-green  { @apply status-dot bg-emerald-500; animation: pulse-glow 2.5s ease-in-out infinite; }
+  .status-dot-amber  { @apply status-dot bg-amber-500; animation: pulse-glow 2.5s ease-in-out infinite; }
+  .status-dot-red    { @apply status-dot bg-red-500; animation: pulse-glow 2s ease-in-out infinite; }
+  .status-dot-gray   { @apply status-dot bg-slate-400; }
+
+  /* ── Guidance prose ──────────────────────────────── */
+  .guidance-prose h2 {
+    @apply text-sm font-bold text-foreground mt-5 mb-2 tracking-tight;
+  }
+  .guidance-prose p {
+    @apply text-sm text-foreground leading-relaxed mb-3;
+  }
+  .guidance-prose ol {
+    @apply list-decimal list-inside text-sm text-foreground space-y-1.5 mb-3 pl-1;
+  }
+  .guidance-prose ul {
+    @apply list-disc list-inside text-sm text-foreground space-y-1.5 mb-3 pl-1;
+  }
+  .guidance-prose strong {
+    @apply font-semibold;
+  }
+  .guidance-prose .safety-note {
+    @apply mt-4 p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800;
+  }
+
+  /* ── Chat messages ───────────────────────────────── */
+  .chat-message-user {
+    @apply ml-auto max-w-[85%] bg-[hsl(var(--primary))] text-white rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed;
+    box-shadow: 0 2px 8px rgba(22, 163, 148, 0.3);
+  }
+
+  .chat-message-ai {
+    @apply mr-auto max-w-[90%] bg-white border border-[hsl(var(--border))] rounded-2xl rounded-tl-sm px-4 py-4 text-sm leading-relaxed text-foreground;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  /* ── Input styles ────────────────────────────────── */
+  .afya-input {
+    @apply w-full rounded-xl border border-[hsl(var(--border))] bg-white px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-all duration-150;
+    @apply focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))/40] focus:border-[hsl(var(--primary))];
+  }
+
+  /* ── Quick action chips ──────────────────────────── */
+  .prompt-chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-[hsl(var(--border))] bg-white text-foreground transition-all duration-150 cursor-pointer select-none;
+    @apply hover:bg-[hsl(var(--primary-light))] hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))];
+    @apply active:scale-95;
+  }
+
+  /* ── Nav items ───────────────────────────────────── */
+  .nav-item {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-150;
+    color: hsl(var(--nav-text));
+  }
+  .nav-item:hover {
+    background: hsl(var(--nav-border));
+    color: hsl(var(--nav-text-active));
+  }
+  .nav-item-active {
+    background: hsl(171 72% 34% / 0.18) !important;
+    color: hsl(170 80% 76%) !important;
+    border-left: 2px solid hsl(170 80% 60%);
+    padding-left: calc(0.875rem - 2px) !important;
+  }
+
+  /* ── Scrollbar ───────────────────────────────────── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+}
+
+@layer utilities {
+  /* ── Animations ──────────────────────────────────── */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+    50%       { opacity: 0.7; }
+  }
+  @keyframes typing-dot {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40%           { transform: scale(1); opacity: 1; }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to   { background-position: 200% 0; }
+  }
+
+  .animate-fade-in    { animation: fade-in 0.35s ease-out both; }
+  .animate-fade-up    { animation: fade-up 0.4s ease-out both; }
+  .animate-slide-in   { animation: slide-in-right 0.3s ease-out both; }
+  .animate-pulse-soft { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+  .animate-typing-1 { animation: typing-dot 1.4s ease-in-out infinite; }
+  .animate-typing-2 { animation: typing-dot 1.4s ease-in-out 0.2s infinite; }
+  .animate-typing-3 { animation: typing-dot 1.4s ease-in-out 0.4s infinite; }
+
+  .skeleton {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  /* Stagger animation helpers */
+  .delay-50  { animation-delay: 50ms; }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-250 { animation-delay: 250ms; }
+  .delay-300 { animation-delay: 300ms; }
+}

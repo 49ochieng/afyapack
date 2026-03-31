@@ -1,0 +1,18 @@
+{
+  "name": "afyapack-mcp",
+  "version": "1.0.0",
+  "description": "AfyaPack MCP server — local AI tools with Swahili support via Foundry Local & Ollama",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node src/test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "dotenv": "^16.4.1",
+    "zod": "^3.22.4"
+  }
+}

@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+api/node_modules/
+web/node_modules/
+mcp/node_modules/
+
+# Environment files — NEVER commit these
+.env
+.env.local
+.env.production
+.env.*.local
+api/.env
+mcp/.env
+
+# Database files (ephemeral in production)
+*.db
+*.db-shm
+*.db-wal
+api/afyapack.db
+
+# Next.js
+web/.next/
+web/out/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

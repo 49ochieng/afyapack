@@ -1,0 +1,18 @@
+{
+  "_comment": "Add this to your Claude Desktop config at: %APPDATA%\\Claude\\claude_desktop_config.json",
+  "_instructions": "Merge the 'mcpServers' block into your existing claude_desktop_config.json",
+  "mcpServers": {
+    "afyapack": {
+      "command": "node",
+      "args": ["C:\\copilot\\AfyaPack\\mcp\\src\\index.js"],
+      "env": {
+        "FOUNDRY_ENDPOINT": "http://127.0.0.1:54346",
+        "FOUNDRY_MODEL": "qwen2.5-0.5b-instruct-generic-cpu:4",
+        "OLLAMA_ENDPOINT": "http://localhost:11434",
+        "OLLAMA_MODEL": "mistral:latest",
+        "AFYAPACK_API_URL": "http://localhost:3001",
+        "DEFAULT_LANGUAGE": "sw"
+      }
+    }
+  }
+}

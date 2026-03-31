@@ -1,0 +1,16 @@
+{
+  "name": "afyapack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c cyan,magenta \"npm run dev --prefix api\" \"npm run dev --prefix web\"",
+    "dev:api": "npm run dev --prefix api",
+    "dev:web": "npm run dev --prefix web",
+    "install:all": "npm install && npm install --prefix api && npm install --prefix web",
+    "build:web": "npm run build --prefix web",
+    "start": "concurrently -n API,WEB -c cyan,magenta \"npm run start --prefix api\" \"npm run start --prefix web\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
