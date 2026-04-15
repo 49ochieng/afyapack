@@ -6,6 +6,21 @@ AfyaPack is a full-stack AI health assistant that works entirely offline, using 
 
 ---
 
+## 🎓 Hands-On Lab Experience
+
+**Building this yourself?** This project includes a complete step-by-step lab curriculum:
+
+| Resource | Description |
+|----------|-------------|
+| [**LAB_README.md**](LAB_README.md) | Start here — full lab overview and learning path |
+| [**labs/**](labs/) | 14 progressive lessons (00-13) from setup to polish |
+| [**docs/**](docs/) | Setup guides, architecture docs, instructor materials |
+| [**prompts/**](prompts/) | Copilot prompt library for healthcare AI development |
+
+The lab teaches **Foundry Local**, **GitHub Copilot**, **RAG patterns**, and **responsible AI** through building AfyaPack from scratch.
+
+---
+
 ## Table of Contents
 
 1. [The Problem](#the-problem)

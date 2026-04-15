@@ -1,0 +1,18 @@
+{
+  "name": "afyapack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline-first AI health decision support",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm run dev -w api",
+    "dev:web": "npm run dev -w web"
+  },
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
